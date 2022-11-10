@@ -27,5 +27,5 @@ while [ true ]; do
     fi
 done
 
-printf "\nSetup complete, script will autorun on boot from now on\n"
+printf " \nSetup complete, script will autorun on boot from now on \n "
 exit 0
