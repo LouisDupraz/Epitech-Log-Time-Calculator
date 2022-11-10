@@ -21,9 +21,9 @@ while [ true ]; do
     read -n 1 k
     if [ $k == "y" ]; then
         echo "PATH=$PATH:"/home/$USER/.autorun"
-        break
+        goto 30
     elif [ $k == "n" ]; then
-        break
+        goto 30
     fi
 done
 
