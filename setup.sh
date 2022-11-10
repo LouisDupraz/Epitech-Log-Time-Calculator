@@ -17,15 +17,16 @@ printf "Autorun folder and files created\n"
 printf "Crontab - Autorun entry created\n"
 
 while [ true ]; do
-    printf "\n  Add the program to path to be able to run the script from anywhere ?\n"
+    printf "\nAdd the program to path to be able to run the script from anywhere ?\n"
     read -n 1 k
     if [ $k == "y" ]; then
-        echo "PATH=$PATH:"/home/$USER/.autorun"
-        goto 30
+        echo "PATH=$PATH:'/home/$USER/.autorun'" >> /home/$USER/.bashrc
+        echo "PATH=$PATH:'/home/$USER/.autorun'" >> /home/$USER/.zshrc
+        break
     elif [ $k == "n" ]; then
-        goto 30
+        break
     fi
 done
 
-printf " \nSetup complete, script will autorun on boot from now on \n "
+printf "\n\nSetup complete, script will autorun on boot from now on.\n"
 exit 0
