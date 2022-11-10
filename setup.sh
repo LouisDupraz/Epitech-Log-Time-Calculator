@@ -28,4 +28,4 @@ while [ true ]; do
 done
 
 printf "\nSetup complete, script will autorun on boot from now on\n"
-
+exit 0
