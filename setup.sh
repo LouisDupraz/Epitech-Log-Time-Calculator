@@ -6,7 +6,7 @@ if [ "$(ls -a /home/$USER/ | grep '.autorun')" == "" ]; then
     mkdir "/home/$USER/.autorun"
 fi
 
-if [ "$(ls -a /home/$USER/.autorun/)" == "" ]; then
+if [ "$(ls /home/$USER/.autorun/)" == "" ]; then
     cp maintain_active.sh "/home/$USER/.autorun/"
 fi
 
@@ -20,8 +20,8 @@ while [ true ]; do
     printf "\nAdd the program to path to be able to run the script from anywhere ?\n"
     read -n 1 k
     if [ $k == "y" ]; then
-        echo "\nPATH=\$PATH:'/home/$USER/.autorun'" >> /home/$USER/.bashrc
-        echo "\nPATH=\$PATH:'/home/$USER/.autorun'" >> /home/$USER/.zshrc
+        echo "PATH=\$PATH:'/home/$USER/.autorun'" >> /home/$USER/.bashrc
+        echo "PATH=\$PATH:'/home/$USER/.autorun'" >> /home/$USER/.zshrc
         break
     elif [ $k == "n" ]; then
         break
