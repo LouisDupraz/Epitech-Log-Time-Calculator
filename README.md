@@ -3,4 +3,4 @@ An autorun script meant to correct the log time measurement at Epitech if Wi-Fi 
 
 # Setup :
 Clone the repo anywhere you want, cd into the folder and make.
-This will setup the script in a ~/.autorun/ folder and automatically (I hope) setup crontab
+This will setup the script in a ~/.autorun/ folder and automatically setup crontab
