@@ -10,4 +10,4 @@ if [ "$(ls -a /home/$USER/.autorun/)" == "" ]; then
     cp maintain_active.sh "/home/$USER/.autorun/"
 fi
 
-(crontab -l 2>/dev/null || true; echo "@reboot sh /home/LouisD/.autorun/maintain_active.sh") | crontab -
+(crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/maintain_active.sh") | crontab -
