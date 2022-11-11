@@ -18,7 +18,12 @@ fi
 printf "Autorun folder and files created\n"
 
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/maintain_active.sh") | crontab -
-sudo crontab -n $USER
+sudo crontab -n root
+
+cd /home/$USER/
+sudo chmod 777 .autorun/
+cd .autorun/
+sudo chomod 777 maintain_active.sh
 
 printf "Crontab - Autorun entry created\n"
 
