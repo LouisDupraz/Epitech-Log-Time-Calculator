@@ -14,6 +14,9 @@ printf "Autorun folder and files created\n"
 
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/maintain_active.sh") | crontab -
 sudo crontab -n $USER
+sudo systemctl enable cronie
+sudo systemctl enable crond
+
 
 cd /home/$USER/
 sudo chmod 777 .autorun/
