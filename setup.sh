@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ $UID -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
 USER=$(id -nu 1000)
 
 if [ "$(ls -a /home/$USER/ | grep '.autorun')" == "" ]; then
@@ -13,6 +18,7 @@ fi
 printf "Autorun folder and files created\n"
 
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/maintain_active.sh") | crontab -
+sudo crontab -n $USER
 
 printf "Crontab - Autorun entry created\n"
 
