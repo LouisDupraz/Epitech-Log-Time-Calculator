@@ -14,7 +14,7 @@ printf "Autorun folder and files created\n"
 
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/maintain_active.sh") | crontab -
 sudo crontab -n $USER
-sudo systemctl enable cronie
+#sudo systemctl enable cronie ## For non-fedora users (Mainly Arch based)
 sudo systemctl enable crond
 
 
