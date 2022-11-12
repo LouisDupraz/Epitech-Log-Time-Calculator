@@ -8,6 +8,7 @@ fi
 
 if [ "$(ls /home/$USER/.autorun/)" == "" ]; then
     cp maintain_active.sh "/home/$USER/.autorun/"
+    cp loop.sh "/home/$USER/.autorun/"
 fi
 
 printf "Autorun folder and files created\n"
