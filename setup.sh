@@ -6,14 +6,14 @@ if [ "$(ls -a /home/$USER/ | grep '.autorun')" == "" ]; then
     mkdir "/home/$USER/.autorun"
 fi
 
-if [ "$(ls /home/$USER/.autorun/)" == "" ]; then
-    cp maintain_active.sh "/home/$USER/.autorun/"
-    cp loop.sh "/home/$USER/.autorun/"
-fi
+rm '/home/$USER/.autorun/*'
+
+cp maintain_active.sh "/home/$USER/.autorun/"
 
 printf "Autorun folder and files created\n"
 
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/maintain_active.sh") | crontab -
+sudo dnf install vlc -y
 sudo crontab -n $USER
 #sudo systemctl enable cronie ## For non-fedora users (Mainly Arch based)
 sudo systemctl enable crond
