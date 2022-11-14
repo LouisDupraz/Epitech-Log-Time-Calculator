@@ -6,9 +6,10 @@ if [ "$(ls -a /home/$USER/ | grep '.autorun')" == "" ]; then
     mkdir "/home/$USER/.autorun"
 fi
 
-rm '/home/$USER/.autorun/*'
+sudo rm -rf '/home/$USER/.autorun/*'
 
 cp maintain_active.sh "/home/$USER/.autorun/"
+cp stream.sh "/home/$USER/.autorun/"
 
 printf "Autorun folder and files created\n"
 
@@ -22,7 +23,8 @@ sudo systemctl enable crond
 cd /home/$USER/
 sudo chmod 777 .autorun/
 cd .autorun/
-sudo chomod 777 maintain_active.sh
+sudo chmod 777 maintain_active.sh
+sudo chmod 777 stream.sh
 
 printf "Crontab - Autorun entry created\n"
 

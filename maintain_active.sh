@@ -1,20 +1,15 @@
 #!/bin/sh
-
-USER=$(id -nu 1000)
-
-#echo "Init at $(date)" >> "/home/$USER/.autorun/nw_init.log"
-
+#echo "Init on $(date)" >> /home/LouisD/scripts/nw_init.log
 sleep 90
 
-#echo "Started detection at $(date)" >> "/home/$USER/.autorun/nw_init.log"
-
+#echo "Started dectection on $(date)" >> /home/LouisD/scripts/nw_init.log
 SSID=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2)
 
-#echo $SSID >> "/home/$USER/.autorun/nw_init.log"
-
-if [ $SSID == "IONIS" ]; then
-    echo "Started activity on $(date)" >> "/home/$USER/.autorun/nw_activity.log"
-    tmux new -d "cvlc --no-audio 'https://www.youtube.com/watch?v=jfKfPfyJRdk' -V dummy"
+"echo "SSID = $SSID" >> /home/LouisD/scripts/nw_init.log
+if [ $SSID == "freebox_moka" ]; then
+    echo "Started activity on $(date)" >> "/home/LouisD/scripts/nw_activity.log";
+    sh /home/LouisD/scripts/stream.sh
 fi
 
 exit 0
+
