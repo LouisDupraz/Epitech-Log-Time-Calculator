@@ -1,7 +1,7 @@
 #!/bin/sh
 
 tmux new -d "cvlc 'https://www.youtube.com/watch?v=jfKfPfyJRdk' -V dummy"
-sleep 5
+sleep 10
 app_name="VLC media player (LibVLC $(pactl list sink-inputs | grep 'application.name = ' | cut -d\( -f2 | cut -d\) -f1 | cut -dC -f2 | tr -d ' '))"
 
 current_sink_num=''
