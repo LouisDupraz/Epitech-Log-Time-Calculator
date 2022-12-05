@@ -22,6 +22,9 @@ cd /home/$USER/
 sudo chmod 777 .autorun/
 cd .autorun/
 sudo chmod 777 detect_nw_activity.sh
+sudo touch /home/logtime.log
+sudo chmod 666 /home/logtime.log
+sudo chown $USER /home/logtime.log
 
 printf "Crontab - Autorun entry created\n"
 
