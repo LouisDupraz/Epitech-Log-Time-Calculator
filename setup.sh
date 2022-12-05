@@ -8,8 +8,7 @@ fi
 
 sudo rm -rf '/home/$USER/.autorun/*'
 
-cp maintain_active.sh "/home/$USER/.autorun/"
-cp stream.sh "/home/$USER/.autorun/"
+cp detect_nw_activity.sh "/home/$USER/.autorun/"
 
 printf "Autorun folder and files created\n"
 
