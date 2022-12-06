@@ -13,7 +13,7 @@ cp convert_to_time.py "/home/$USER/.autorun/"
 
 printf "Autorun folder and files created\n"
 
-(crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/detect_nw_activity.sh") | crontab -
+(crontab -l 2>/dev/null || true; echo "@reboot tmux new -d /home/$USER/.autorun/detect_nw_activity.sh") | crontab -
 sudo crontab -n $USER
 #sudo systemctl enable cronie ## For non-fedora users (Mainly Arch based)
 sudo systemctl enable crond
