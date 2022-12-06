@@ -9,7 +9,9 @@ fi
 sudo rm -rf '/home/$USER/.autorun/*'
 
 cp detect_nw_activity.sh "/home/$USER/.autorun/"
-cp convert_to_time.py "/home/$USER/.autorun/"
+sudo cp K99_logtime "/etc/rc0.d/"
+sudo cp K99_logtime "/etc/rc6.d/"
+
 
 printf "Autorun folder and files created\n"
 
@@ -23,7 +25,8 @@ cd /home/$USER/
 sudo chmod 777 .autorun/
 cd .autorun/
 sudo chmod 777 detect_nw_activity.sh
-sudo chmod 777 convert_to_time.py
+sudo chmod 777 /etc/rc0.d/K99_logtime
+sudo chmod 777 /etc/rc6.d/K99_logtime
 sudo touch /home/logtime.log
 sudo chmod 666 /home/logtime.log
 sudo chown $USER /home/logtime.log
