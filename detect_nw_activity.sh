@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sleep 10
+
 SSID=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2)
 NWACTIVE=0
 
@@ -10,14 +12,14 @@ fi
 
 while [ true ]; do
     SSID=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2)
-    if [ "$SSID" = "IONIS" ]; then #HERE
+    if [ "$SSID" = "IONIS" ]; then
         if [ $NWACTIVE -eq 0 ]; then
             echo "Started activity on $(date)" >> "/home/logtime.log";
             NWACTIVE=1
             TIMEINIT=$(date +%s)
         fi
     fi
-    if [ "$SSID" != "IONIS" ]; then #HERE
+    if [ "$SSID" != "IONIS" ]; then
         if [ $NWACTIVE -eq 1 ]; then
             echo "End on activity on $(date)" >> "/home/logtime.log"
             NWACTIVE=0
