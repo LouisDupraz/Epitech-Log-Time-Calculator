@@ -12,6 +12,7 @@ if [ "$SSID" == "IONIS" ]; then
 fi
 
 while [ true ]; do
+    sleep 60
     SSID=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2)
     if [ "$SSID" = "IONIS" ]; then
         if [ $NWACTIVE -eq 0 ]; then
