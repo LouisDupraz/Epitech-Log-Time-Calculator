@@ -24,11 +24,25 @@ while [ true ]; do
             echo "End on activity on $(date)" >> "/home/logtime.log"
             NWACTIVE=0
             TIMEEND=$(date +%s)
-            PARSEDTIME=(py convert_to_time.py $TIMEINIT $TIMEEND)
-            echo "Device was active for $PARSEDTIME" >> "/home/logtime.log"
+            DELTATIME=$((TIMEEND - TIMEINIT))
+            H=$(echo "scale=0; $DELTATIME/3600 % 24" | bc)
+            M=$(echo "scale=0; $DELTATIME/60 % 60" | bc)
+            S=$(echo "scale=0; $DELTATIME % 60" | bc)
+            echo "Device was active for $H h, $M m, $S s" >> "/home/logtime.log"
         fi
     fi
 done
+
+if [ $NWACTIVE -eq 1 ]; then
+    echo "End on activity on $(date)" >> "/home/logtime.log"
+    NWACTIVE=0
+    TIMEEND=$(date +%s)
+    DELTATIME=$((TIMEEND - TIMEINIT))
+    H=$(echo "scale=0; $DELTATIME/3600 % 24" | bc)
+    M=$(echo "scale=0; $DELTATIME/60 % 60" | bc)
+    S=$(echo "scale=0; $DELTATIME % 60")
+    echo "Device was active for $H h, $M m, $S s" >> "/home/logtime.log"
+fi
 
 
 exit 0
