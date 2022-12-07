@@ -17,6 +17,7 @@ printf "Autorun folder and files created\n"
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/detect_nw_activity.sh &") | crontab -
 sudo crontab -n $USER
 #sudo systemctl enable cronie ## For non-fedora users (Mainly Arch based)
+##sudo dnf install bc -y
 sudo systemctl enable crond
 sudo systemctl enable logonstop
 sudo systemctl daemon-reload
