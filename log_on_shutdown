@@ -1,9 +1,9 @@
 #!/bin/sh
 
 USER=$(id -nu 1000)
-SSID=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2)
+WASACTIVE=$(cat "/home/$USER/.autorun/inittime")
 
-if [ "$SSID" = "IONIS" ]; then
+if [ "$WASACTIVE" != "" ]; then
     echo "End on activity on $(date)" >> "/home/logtime.log"
     TIMEINIT=$(cat "/home/$USER/.autorun/inittime" | bc)
     TIMEEND=$(date +%s)
@@ -12,4 +12,5 @@ if [ "$SSID" = "IONIS" ]; then
     M=$(echo "scale=0; $DELTATIME/60 % 60" | bc)
     S=$(echo "scale=0; $DELTATIME % 60" | bc)
     echo "Device was active for $H h, $M m, $S s ($DELTATIME s)" >> "/home/logtime.log"
+    echo "" > "/home/$USER/.autorun/inittime"
 fi

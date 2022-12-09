@@ -32,6 +32,7 @@ while [ true ]; do
             M=$(echo "scale=0; $DELTATIME/60 % 60" | bc)
             S=$(echo "scale=0; $DELTATIME % 60" | bc)
             echo "Device was active for $H h, $M m, $S s ($DELTATIME s)" >> "/home/logtime.log"
+            echo "" > "/home/$USER/.autorun/inittime"
         fi
     fi
 done
@@ -46,6 +47,7 @@ if [ $NWACTIVE -eq 1 ]; then
     M=$(echo "scale=0; $DELTATIME/60 % 60" | bc)
     S=$(echo "scale=0; $DELTATIME % 60")
     echo "Device was active for $H h, $M m, $S s ($DELTATIME s)" >> "/home/logtime.log"
+    echo "" > "/home/$USER/.autorun/inittime"
 fi
 
 
