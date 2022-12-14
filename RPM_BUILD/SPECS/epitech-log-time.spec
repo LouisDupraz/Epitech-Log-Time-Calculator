@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        An offline logtime calculator for Epitech
 BuildArch:      noarch
 
-License:        MIT
+License:        GPL3
 Source0:        %{name}-%{version}.tar.gz
 
 Requires:       bash
