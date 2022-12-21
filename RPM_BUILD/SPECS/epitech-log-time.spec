@@ -27,7 +27,9 @@ install -m 666 logonstop.service $RPM_BUILD_ROOT%{_exec_prefix}/lib/systemd/syst
 crontab -r
 (crontab -l 2>/dev/null || true; echo "@reboot sh /home/$USER/.autorun/detect_nw_activity.sh &") | crontab -
 sudo crontab -n $(id -nu 1000)
+sudo install -m 666 logonstop.service %{_exec_prefix}/lib/systemd/system/logonstop.service
 sudo systemctl enable crond
+sudo systemctl enable logonstop
 sudo systemctl daemon-reload
 touch logtime.log
 install -m 666 logtime.log $RPM_BUILD_ROOT%{_datadir}/epitech-log-time/logtime.log
